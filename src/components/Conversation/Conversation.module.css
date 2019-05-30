@@ -1,0 +1,18 @@
+.container {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: white;
+    padding-bottom: 20px;
+}
+
+.avatar {
+    height: 60px;
+    width: 60px;
+    border-radius: 50%;
+    border: 5px solid;
+}
+
+.name {
+    padding-left: 8px;
+}
