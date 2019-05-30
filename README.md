@@ -41,4 +41,6 @@ I used fetch for making api calls. I used primitive approach with this, because 
 
 I am using css modules. Design is simple, and it reflects FB messenger style the most I would say. Mobile design needs to be improved. For smallest screens we should change layout a bit. User should see just conversations, and then when he clicks on one, user should see messages in that conversation. Also we need to add back button in messages so that user could go back to list of conversations in that scenario.
 
+I also didn't have a time to implement a time information bellow grouped messages.
+
 
