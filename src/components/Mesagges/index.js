@@ -4,16 +4,43 @@ import { withRouter } from 'react-router-dom';
 import Message from '../Message';
 
 function Messages({match: { params: { conversationId }}}) {
+  const conversationsUrl = `https://conversation-echo-api.tamedia-origami.ch/conversations/${conversationId}/messages`;
   const [messages, setMessages ] = useState([]);
+  const [newMessage, setNewMessage ] = useState('');
   useEffect(() => {
-    fetch(`https://conversation-echo-api.tamedia-origami.ch/conversations/${conversationId}/messages`)
+    fetch(conversationsUrl)
       .then(function(response) {
         return response.json();
       })
-      .then(function(myJson) {
-        setMessages(myJson);
+      .then(function(responseMessages) {
+        setMessages(responseMessages);
       });
-  }, [conversationId]);
+  }, [conversationsUrl]);
+
+  const onChange = (e) => {
+    setNewMessage(e.target.value);
+  };
+
+  const handleKeyDown = (e) => {
+    if (e.key === 'Enter') {
+      console.log('do validate');
+      fetch(conversationsUrl, {
+        method: 'POST',
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({content: newMessage})
+      })
+        .then(function(response) {
+          return response.json();
+        })
+        .then(function(echoMessage) {
+          setMessages([...messages, echoMessage]);
+        });
+    }
+  };
+
   return (
     <div className={styles.container}>
       <ul>
@@ -21,6 +48,9 @@ function Messages({match: { params: { conversationId }}}) {
         return <Message message={message} key={message.id} />
       })}
       </ul>
+      <div className={styles.inputContainer}>
+        <input className={styles.input} onKeyDown={handleKeyDown} onChange={onChange} value={newMessage} />
+      </div>
     </div>
   );
 }
