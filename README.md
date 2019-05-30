@@ -6,6 +6,14 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 ### Docker usage
 
+### Prerequisites
+
+Before we make use of docker, we need to clone the project: 
+
+```git clone https://github.com/civerazdaM/conversation-app.git```. 
+
+Then we need to ```cd conversation-app```.
+
 #### Docker dev
 It can be run in dev mode with fallowing command :
 
