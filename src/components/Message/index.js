@@ -1,9 +1,13 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import styles from './Message.module.css';
-import { currentUserId } from '../../util';
+import { UserContext } from '../../providers/UserProvider';
 
 function Message({ message }) {
-  const isCurrentUser = currentUserId === message.participant.id;
+  const user = useContext(UserContext);
+  if(!user) {
+    return;
+  }
+  const isCurrentUser = user.id === message.participant.id;
   return (
   <li className={isCurrentUser ? styles.me : styles.participant}>
     {message.content}

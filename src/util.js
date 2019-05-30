@@ -1,1 +1,0 @@
-export const currentUserId = 'c86604b2-70ca-4831-ad85-4dd419ffc28b';
