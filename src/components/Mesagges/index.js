@@ -16,9 +16,11 @@ function Messages({match: { params: { conversationId }}}) {
   }, [conversationId]);
   return (
     <div className={styles.container}>
+      <ul>
       {messages.map(message => {
         return <Message message={message} key={message.id} />
       })}
+      </ul>
     </div>
   );
 }
