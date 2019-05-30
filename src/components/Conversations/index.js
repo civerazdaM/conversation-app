@@ -12,7 +12,7 @@ function Conversations() {
       .then(function(myJson) {
         setConversations(myJson)
       });
-  });
+  }, []);
   return (
     <div className={styles.container}>
       {conversations.map(conversation => {
